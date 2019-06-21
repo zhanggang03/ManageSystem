@@ -1,0 +1,51 @@
+{
+  "name": "managesystem",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.19.6",
+    "babel-plugin-import": "^1.12.0",
+    "cross-env": "^5.2.0",
+    "customize-cra": "^0.2.13",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.4.1",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-app-rewired": "^2.1.3",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint . --fix",
+    "start": "cross-env NODE_ENV=development react-app-rewired start",
+    "build": "cross-env NODE_ENV=production react-app-rewired build",
+    "test": "cross-env NODE_ENV=test react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn t --passWithNoTests"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
