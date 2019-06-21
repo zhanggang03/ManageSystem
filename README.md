@@ -66,6 +66,8 @@ js文件： import style from './index.scss';
     index.js
     rootReducer.js
 
+#第二阶段 开始编码
+
 
 
 
