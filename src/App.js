@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Route from './app/home';
+import Route from './route';
 
 function App() {
     console.log(process.env.REACT_APP_AA);

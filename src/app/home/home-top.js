@@ -8,7 +8,7 @@ export default class HomeTop extends Component {
     render() {
         return (
             <div>
-                <image className="home_header" alt=""></image>
+                <img className="home_header" alt=""></img>
             </div>
         );
     }

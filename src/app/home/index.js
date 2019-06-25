@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
-import {Layout, Icon} from 'antd';
+import React from 'react';
+import {Layout} from 'antd';
 import './home.scss';
 import HomeTop from './home-top';
 import HomeMenu from './home-menu';
+import HomeContent from './home-content';
 
 const {Header, Content, Sider, Footer} = Layout;
 
-export default () => {
+export default props => {
     return (
         <Layout>
-            <Header className="header">
+            <Header className="header" style={{height: 100, padding: 0}}>
                 <HomeTop></HomeTop>
             </Header>
 
@@ -25,7 +26,7 @@ export default () => {
                         minHeight: 280,
                     }}
                 >
-                    Content
+                    <HomeContent />
                 </Content>
             </Layout>
 

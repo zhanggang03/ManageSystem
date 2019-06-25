@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Menu, Breadcrumb, Icon} from 'antd';
+import {Menu, Icon} from 'antd';
 import './home.scss';
 
 const {SubMenu} = Menu;

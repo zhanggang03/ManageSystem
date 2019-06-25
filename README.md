@@ -67,6 +67,8 @@ js文件： import style from './index.scss';
     rootReducer.js
 
 #第二阶段 开始编码
+2019-06-25
+#yarn add axios --save-dev   axios请求服务器数据
 
 
 

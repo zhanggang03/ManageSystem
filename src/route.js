@@ -1,14 +1,16 @@
-import React, {lazy} from 'react';
-import {BrowserRouter, Route, Link, Redirect} from 'react-router-dom';
+import React, {lazy, Suspense} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 //Home页面
-const Home = lazy(() => import('./home'));
+const Home = lazy(() => import('./app/home'));
 
 export default () => (
     <BrowserRouter>
-        <switch>
-            <Route path="/" exact component={Home} />
-            <Redirect to="/" />
-        </switch>
+        <Suspense fallback={<div />}>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/home" component={Home} />
+            </Switch>
+        </Suspense>
     </BrowserRouter>
 );
