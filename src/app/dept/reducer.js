@@ -1,12 +1,18 @@
-import {ADD_USER, EDIT_USER, DELETE_USER, SELECT_DEPT} from './action';
+import {
+    ADD_USER,
+    EDIT_USER,
+    DELETE_USER,
+    SELECT_DEPT_FINISH,
+    GET_ALLDEPT_FINISH,
+} from './action';
 import {ADD_DEPT, EDIT_DEPT, DELETE_DEPT} from './action';
 
-let initialUserState = {};
+let initialUserState = [];
 
 export const UserReducer = (state = initialUserState, action) => {
     switch (action.type) {
-        case SELECT_DEPT:
-            return state;
+        case SELECT_DEPT_FINISH:
+            return action.payload;
         case ADD_USER:
             return state;
         case EDIT_USER:
@@ -18,10 +24,12 @@ export const UserReducer = (state = initialUserState, action) => {
     }
 };
 
-let initialDeptState = {};
+let initialDeptState = [];
 
 export const DeptReducer = (state = initialDeptState, action) => {
     switch (action.type) {
+        case GET_ALLDEPT_FINISH:
+            return action.payload;
         case ADD_DEPT:
             return state;
         case EDIT_DEPT:

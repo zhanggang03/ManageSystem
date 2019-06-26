@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import {Table} from 'antd';
+import {Table, Button} from 'antd';
 import {Resizable} from 'react-resizable';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import ShowModal from '@src/app/uitls/showmodal';
+import UserView from '@src/app/dept/userview';
 
 const ResizeableTitle = props => {
     const {onResize, width, ...restProps} = props;
@@ -16,38 +20,70 @@ const ResizeableTitle = props => {
     );
 };
 
-export default class UserTable extends Component {
+class UserTable extends Component {
     constructor(props) {
         super(props);
         this.state = this.columnHeader;
     }
 
+    showUserClick = userCode => {
+        let view = this.refs.userViewModal;
+        view.openModal('用户信息', true, {userCode: userCode});
+    };
+
     columnHeader = {
         columns: [
             {
-                title: 'Date',
-                dataIndex: 'date',
+                title: '用户名称',
+                dataIndex: 'UserName',
+                width: 150,
+            },
+            {
+                title: '职称',
+                dataIndex: 'Title',
                 width: 200,
             },
             {
-                title: 'Amount',
-                dataIndex: 'amount',
-                width: 100,
+                title: '登录名',
+                dataIndex: 'LoginCode',
+                width: 150,
             },
             {
-                title: 'Type',
-                dataIndex: 'type',
-                width: 100,
-            },
-            {
-                title: 'Note',
-                dataIndex: 'note',
-                width: 100,
+                title: '备注',
+                dataIndex: 'Memo',
+                width: 240,
             },
             {
                 title: 'Action',
                 key: 'action',
-                render: () => <a href="javascript:;">Delete</a>,
+                render: (text, rowRecord) => (
+                    <div>
+                        <Button
+                            className="menu-button"
+                            type="primary"
+                            size="small"
+                            onClick={() => {
+                                this.showUserClick(rowRecord.Code);
+                            }}
+                        >
+                            详情
+                        </Button>
+                        <Button
+                            className="menu-button"
+                            type="primary"
+                            size="small"
+                        >
+                            编辑
+                        </Button>
+                        <Button
+                            className="menu-button"
+                            type="primary"
+                            size="small"
+                        >
+                            删除
+                        </Button>
+                    </div>
+                ),
             },
         ],
     };
@@ -57,30 +93,6 @@ export default class UserTable extends Component {
             cell: ResizeableTitle,
         },
     };
-
-    data = [
-        {
-            key: 0,
-            date: '2018-02-11',
-            amount: 120,
-            type: 'income',
-            note: 'transfer',
-        },
-        {
-            key: 1,
-            date: '2018-03-11',
-            amount: 243,
-            type: 'income',
-            note: 'transfer',
-        },
-        {
-            key: 2,
-            date: '2018-04-11',
-            amount: 98,
-            type: 'income',
-            note: 'transfer',
-        },
-    ];
 
     handleResize = index => (e, {size}) => {
         this.setState(({columns}) => {
@@ -94,6 +106,7 @@ export default class UserTable extends Component {
     };
 
     render() {
+        const {users} = this.props;
         const columns = this.state.columns.map((col, index) => ({
             ...col,
             onHeaderCell: column => ({
@@ -102,12 +115,33 @@ export default class UserTable extends Component {
             }),
         }));
         return (
-            <Table
-                bordered
-                components={this.components}
-                columns={columns}
-                dataSource={this.data}
-            />
+            <div>
+                <Table
+                    rowKey={record => record.Code}
+                    bordered
+                    components={this.components}
+                    columns={columns}
+                    dataSource={users}
+                />
+                <ShowModal ref="userViewModal">
+                    <UserView />
+                </ShowModal>
+            </div>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        users: state.users,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({}, dispatch);
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(UserTable);
