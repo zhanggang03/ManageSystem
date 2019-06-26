@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Layout, Icon, Tree} from 'antd';
+import {Layout} from 'antd';
 import './dept.scss';
+import DeptTree from './depttree';
 import UserTable from './usertable';
 
 const {Content, Sider} = Layout;
-const {TreeNode} = Tree;
 
 class DeptInfo extends Component {
     constructor(props) {
@@ -16,27 +16,7 @@ class DeptInfo extends Component {
         return (
             <Layout className="layout">
                 <Sider className="silder">
-                    <Tree
-                        showIcon
-                        defaultExpandAll
-                        defaultSelectedKeys={['1']}
-                        switcherIcon={<Icon type="down" />}
-                    >
-                        <TreeNode
-                            icon={({selected}) => (
-                                <Icon type={selected ? 'frown-o' : 'meh-o'} />
-                            )}
-                            title="业务科"
-                            key="1"
-                        ></TreeNode>
-                        <TreeNode
-                            icon={({selected}) => (
-                                <Icon type={selected ? 'frown-o' : 'meh-o'} />
-                            )}
-                            title="财务科"
-                            key="2"
-                        ></TreeNode>
-                    </Tree>
+                    <DeptTree />
                 </Sider>
                 <Content
                     style={{

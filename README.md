@@ -45,6 +45,8 @@ js文件： import style from './index.scss';
     "test": "cross-env NODE_ENV=test react-app-rewired test"
   }
 
+### yarn add redux --save-dev   Redux
+
 ### yarn add  react-redux --save    增加状态管理机制
 
 ###  yarn add react-router-dom  --save  增加路由管理机制
@@ -68,7 +70,8 @@ js文件： import style from './index.scss';
 
 #第二阶段 开始编码
 2019-06-25
-#yarn add axios --save-dev   axios请求服务器数据
+###yarn add axios --save-dev   axios请求服务器数据
+
 
 
 

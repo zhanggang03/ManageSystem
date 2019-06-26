@@ -94,7 +94,6 @@ export default class UserTable extends Component {
     };
 
     render() {
-        debugger;
         const columns = this.state.columns.map((col, index) => ({
             ...col,
             onHeaderCell: column => ({
