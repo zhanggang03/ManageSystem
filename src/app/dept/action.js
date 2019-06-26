@@ -24,15 +24,22 @@ export function deleteUser(user) {
 }
 
 export const SELECT_DEPT = 'SELECT_DEPT';
+export const SELECT_DEPT_Finish = 'SELECT_DEPT_Finish';
 export const ADD_DEPT = 'ADD_DEPT';
 export const EDIT_DEPT = 'EDIT_DEPT';
 export const DELETE_DEPT = 'DELETE_DEPT';
 
 export function selectDept(dept) {
-    debugger;
     return {
         type: SELECT_DEPT,
         payload: dept,
+    };
+}
+
+export function selectDeptFinish(users) {
+    return {
+        type: SELECT_DEPT_Finish,
+        payload: users,
     };
 }
 

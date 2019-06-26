@@ -7,5 +7,4 @@ const rootReducers = combineReducers({
     depts: DeptReducer,
 });
 
-
 export default rootReducers;

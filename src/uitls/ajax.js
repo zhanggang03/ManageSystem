@@ -7,7 +7,7 @@ export default axios;
 //注：qs，使用axios，必须得安装 qs，所有的Post 请求，我们都需要 qs,对参数进行序列化
 
 // 设置默认请求根路径
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/rest';
 
 //request拦截器,可以用于添加请求令牌
 axios.interceptors.request.use(

@@ -1,12 +1,12 @@
-import {ADD_USER, EDIT_USER, DELETE_USER, SELECT_DEPT} from './action';
+import {ADD_USER, EDIT_USER, DELETE_USER, SELECT_DEPT_Finish} from './action';
 import {ADD_DEPT, EDIT_DEPT, DELETE_DEPT} from './action';
 
-let initialUserState = {};
+let initialUserState = [];
 
 export const UserReducer = (state = initialUserState, action) => {
     switch (action.type) {
-        case SELECT_DEPT:
-            return state;
+        case SELECT_DEPT_Finish:
+            return action.payload;
         case ADD_USER:
             return state;
         case EDIT_USER:
