@@ -26,7 +26,11 @@ export function deleteUser(user) {
 export const GET_ALLDEPT = 'GET_ALLDEPT';
 export const GET_ALLDEPT_FINISH = 'GET_ALLDEPT_FINISH';
 export const SELECT_DEPT = 'SELECT_DEPT';
+<<<<<<< HEAD
 export const SELECT_DEPT_FINISH = 'SELECT_DEPT_FINISH';
+=======
+export const SELECT_DEPT_Finish = 'SELECT_DEPT_Finish';
+>>>>>>> 95d6dec470939d38dbcf32dacc3a13458e86d170
 export const ADD_DEPT = 'ADD_DEPT';
 export const EDIT_DEPT = 'EDIT_DEPT';
 export const DELETE_DEPT = 'DELETE_DEPT';
@@ -53,7 +57,11 @@ export function selectDept(dept) {
 
 export function selectDeptFinish(users) {
     return {
+<<<<<<< HEAD
         type: SELECT_DEPT_FINISH,
+=======
+        type: SELECT_DEPT_Finish,
+>>>>>>> 95d6dec470939d38dbcf32dacc3a13458e86d170
         payload: users,
     };
 }
