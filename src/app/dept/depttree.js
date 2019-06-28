@@ -4,6 +4,8 @@ import './dept.scss';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getAllDept, selectDept, addDept, editDept, deleteDept} from './action';
+import ShowModal from '@src/app/uitls/showmodal';
+import DeptAdd from './deptadd';
 
 const {TreeNode} = Tree;
 
@@ -19,6 +21,11 @@ class DeptTree extends Component {
         console.log(info);
     };
 
+    showDeptAddClick = () => {
+        let view = this.refs.deptAddModal;
+        view.openModal('新增科室', true, {});
+    };
+
     render() {
         const {
             getAllDept,
@@ -31,15 +38,15 @@ class DeptTree extends Component {
         return (
             <div>
                 <div>
-                    <Button
-                        className="menu-button"
-                        type="primary"
-                        size="small"
-                        onClick={selectedKeys => getAllDept(selectedKeys)}
-                    >
+                    <Button className="menu-button" type="primary" size="small">
                         刷新
                     </Button>
-                    <Button type="primary" size="small" className="menu-button">
+                    <Button
+                        type="primary"
+                        size="small"
+                        className="menu-button"
+                        onClick={() => this.showDeptAddClick()}
+                    >
                         新增
                     </Button>
                     <Button
@@ -72,6 +79,9 @@ class DeptTree extends Component {
                         );
                     })}
                 </Tree>
+                <ShowModal ref="deptAddModal">
+                    <DeptAdd />
+                </ShowModal>
             </div>
         );
     }

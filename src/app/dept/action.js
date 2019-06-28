@@ -28,6 +28,7 @@ export const GET_ALLDEPT_FINISH = 'GET_ALLDEPT_FINISH';
 export const SELECT_DEPT = 'SELECT_DEPT';
 export const SELECT_DEPT_FINISH = 'SELECT_DEPT_FINISH';
 export const ADD_DEPT = 'ADD_DEPT';
+export const ADD_DEPT_FINISH = 'ADD_DEPT_FINISH';
 export const EDIT_DEPT = 'EDIT_DEPT';
 export const DELETE_DEPT = 'DELETE_DEPT';
 
@@ -58,9 +59,17 @@ export function selectDeptFinish(users) {
     };
 }
 
-export function addDept(dept) {
+export function addDept(dept, closeModul) {
     return {
         type: ADD_DEPT,
+        payload: dept,
+        close: closeModul,
+    };
+}
+
+export function addDeptFinish(dept) {
+    return {
+        type: ADD_DEPT_FINISH,
         payload: dept,
     };
 }

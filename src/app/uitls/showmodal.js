@@ -1,12 +1,15 @@
-import React, {Component, lazy} from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {Modal} from 'antd';
 
 class ShowModal extends Component {
     handleSubmit = () => {
-        this.setState({loading: true});
-        setTimeout(() => {
-            this.setState({loading: false, visible: false});
-        }, 3000);
+        //this.setState({loading: true});
+        //setTimeout(() => {
+        //    this.setState({loading: false, visible: false});
+        //}, 3000);
+        this.setState({visible: false});
     };
 
     handleCancel = () => {
@@ -40,7 +43,7 @@ class ShowModal extends Component {
                     title={this.state.title}
                     onOk={this.handleSubmit}
                     onCancel={this.handleCancel}
-                    footer={[]}
+                    footer={null}
                 >
                     {React.Children.map(this.props.children, child => {
                         return React.cloneElement(child, {
@@ -53,4 +56,17 @@ class ShowModal extends Component {
     }
 }
 
-export default ShowModal;
+function mapStateToProps(state) {
+    return {};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({}, dispatch);
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    {forwardRef: true}
+)(ShowModal);

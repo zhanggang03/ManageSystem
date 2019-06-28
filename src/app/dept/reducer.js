@@ -4,6 +4,7 @@ import {
     DELETE_USER,
     SELECT_DEPT_FINISH,
     GET_ALLDEPT_FINISH,
+    ADD_DEPT_FINISH,
 } from './action';
 import {ADD_DEPT, EDIT_DEPT, DELETE_DEPT} from './action';
 
@@ -30,8 +31,8 @@ export const DeptReducer = (state = initialDeptState, action) => {
     switch (action.type) {
         case GET_ALLDEPT_FINISH:
             return action.payload;
-        case ADD_DEPT:
-            return state;
+        case ADD_DEPT_FINISH:
+            return [...state, action.payload];
         case EDIT_DEPT:
             return state;
         case DELETE_DEPT:
